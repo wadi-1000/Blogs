@@ -15,3 +15,7 @@ def about():
 @main.route('/post')
 def post ():
     render_template('post.html')
+
+@main.route('/contact')
+def contact():
+    return render_template('contact.html')
