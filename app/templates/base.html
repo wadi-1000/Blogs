@@ -1,5 +1,10 @@
 {% extends 'bootstrap/base.html' %}
 
+<!-- Navbar block  --> 
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
 
 <html>
     <head>
@@ -7,7 +12,7 @@
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> Home - Blogger </title>
+        <title> Zuess </title>
         {% endif %}
     </head>
     <body>
