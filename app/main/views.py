@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for
 from . import main
+
 
 
 # Views
@@ -8,7 +9,8 @@ def index():
     '''
     View function that returns homepage
     '''
-    return render_template('index.html')
+    title = 'Zuess'
+    return render_template('index.html', title = title)
 
 
 @main.route('/about')
@@ -16,18 +18,29 @@ def about():
     '''
     View function that returns about page
     '''
-    return render_template('about.html')
+    title = 'Zuess'
+    return render_template('about.html', title = title)
 
 @main.route('/post')
 def post ():
     '''
     View function that returns postt page for posting blogs
     '''
-    render_template('post.html')
+    title = 'Zuess'
+    return render_template('post.html', title = title)
 
 @main.route('/contact')
 def contact():
     '''
     View function that returns contact page
     '''
-    return render_template('contact.html')
+    title = 'Zuess'
+    return render_template('contact.html', title = title)
+
+@main.route('/add')
+def add():
+    '''
+    View function that returns form to add a post
+    '''
+    title = 'Zuess'
+    return render_template('add.html', title = title)
