@@ -40,7 +40,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('main.add') }}" id="ad">Add</a>
       </li>
-      
+      {% if current_user.is_authenticated %}
+      <li style="color:white;padding:15px;">{{current_user.username}}</li>
+      <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+      {% else %}
+      <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+      {%endif%}
       </ul>
     </div>
   </div>
@@ -86,6 +91,15 @@
 
 <!-- Footer -->
 <footer>
+  <div class="col-md-4">
+    <div class="container">
+        <div class="card cardquote">
+            <div class="card-title">
+                <h4>A quote by: <span style="color: rgb(3, 3, 3)">{{quote.author}}</span> </h4>
+            </div>
+            <p class="card-text">{{quote.quote}}</p>
+        </div>
+    </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">

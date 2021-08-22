@@ -37,7 +37,16 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main.about') }}" id="a">About</a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.add') }}" id="ad">Add</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li style="color:white;padding:15px;">{{current_user.username}}</li>
+            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+            {% else %}
+            <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+            {%endif%}
+          
           </ul>
         </div>
       </div>
@@ -45,7 +54,7 @@
     </div>
 
     <!-- Page Header -->
-    <header class="masthead" id="img4">
+    <header class="masthead" id="img3">
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -62,7 +71,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <form name="addForm" id="addForm" method="POST" action="{{ url_for('addpost') }}" novalidate>
+            <form name="addForm" id="addForm" method="POST" action="{{ url_for('main.addpost') }}" novalidate>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Title</label>
@@ -121,4 +130,4 @@
   
       <!-- Custom scripts for this template -->
       <script src="{{ url_for('static', filename='clean-blog.min.js') }}"></script>
-  
+  {% endblock %}

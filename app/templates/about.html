@@ -6,6 +6,17 @@
 <!-- Custom styles for this template -->
 <link href="{{ url_for('static', filename='clean-blog.min.css') }}" rel="stylesheet">
 
+<!-- Custom fonts for this template -->
+<link href="{{ url_for('static', filename='font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
 
 
 <!-- Navigation -->
@@ -25,6 +36,15 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('main.about') }}" id="a">About</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.add') }}" id="ad">Add</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li style="color:white;padding:15px;">{{current_user.username}}</li>
+        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+        {% else %}
+        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+        {%endif%}
         
       </ul>
     </div>
@@ -32,7 +52,7 @@
 </nav>
 </div>
 <!-- Page Header -->
-<header class="masthead" id="img1">
+<header class="masthead" id="img2">
   <div class="container" style="margin: 70px;">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -52,10 +72,11 @@
     <div class="row">
         <h2>This is what I do.</h2>
       <div class="col-lg-8 col-md-10 mx-auto">
-        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</p> -->
-      </div>
+       <p>I am a programmer.</p>
+       <p> Programmers write code for computer programs and mobile applications.</p> 
+       <p>They also are involved in maintaining, debugging and troubleshooting systems and software to ensure that everything is running smoothly.</p>
+      
+    </div>
     </div>
   </div>
 
