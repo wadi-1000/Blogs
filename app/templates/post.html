@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Bootstrap core CSS -->
+<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+
+<!-- Custom styles for this template -->
+<link href="{{ url_for('static', filename='clean-blog.min.css') }}" rel="stylesheet">
+
+
+<!-- Custom fonts for this template -->
+<link href="{{ url_for('static', filename='font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+
+<!-- Navigation -->
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}" id="name">Zuess</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.index') }}" id="h">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.about') }}" id="a">About</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </div>
+
+      <!-- Page Header -->
+      <header class="masthead" id="img3">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="post-heading">
+                <h1>{{ post.title }}</h1>
+                <h2 class="subheading">{{ post.subtitle }}</h2>
+                <span class="meta">Posted by
+                  {{ post.author }}
+                  on {{ post.date_posted.strftime('%B %d, %Y') }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+  
+      <!-- Post Content -->
+      <article>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              {{ post.content|safe }}
+            </div>
+          </div>
+        </div>
+      </article>
+  
+      <hr>
+
+      <!-- Footer -->
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+  
+  <!-- Custom scripts for this template -->
+  <script src="{{ url_for('static', filename='clean-blog.min.js') }}"></script>
+  {% endblock %}
