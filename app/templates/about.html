@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Bootstrap core CSS -->
+<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ url_for('static', filename='clean-blog.min.css') }}" rel="stylesheet">
+
+
+
+<!-- Navigation -->
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}" id="name">Zuess</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('main.index') }}" id="h">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('main.about') }}" id="a">About</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+<!-- Page Header -->
+<header class="masthead" id="img1">
+  <div class="container" style="margin: 70px;">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading" id="txt">
+          <h1>About me</h1>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+        <h2>This is what I do.</h2>
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</p> -->
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Bootstrap core JavaScript -->
+<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{{ url_for('static', filename='clean-blog.min.js') }}"></script>
+{% endblock %}
