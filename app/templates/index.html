@@ -93,13 +93,19 @@
 <footer>
   <div class="col-md-4">
     <div class="container">
+      {% for quote in quotes %}
+      {% if quote.quote == quotes[0].quote %}
+      {% else %}
         <div class="card cardquote">
             <div class="card-title">
                 <h4>A quote by: <span style="color: rgb(3, 3, 3)">{{quote.author}}</span> </h4>
             </div>
             <p class="card-text">{{quote.quote}}</p>
         </div>
-    </div>
+      {% endif %}
+      {% endfor %}
+      </div>
+    
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">

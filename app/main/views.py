@@ -3,7 +3,7 @@ from . import main
 from ..models import Blogpost,db,User,Comment
 from datetime import datetime
 from flask_login import login_required,current_user
-from app.requests import get_quotes
+from app.requests import get_quotes, repeat_get_quotes
 
 
 # Views
@@ -14,8 +14,9 @@ def index():
     '''
     title = 'Zuess'
     posts = Blogpost.query.order_by(Blogpost.date_posted.desc()).all()
-    quotes = get_quotes()
-    return render_template('index.html', title = title, posts = posts, quote = quotes)
+    quote = get_quotes()
+    quotes = repeat_get_quotes(10, get_quotes)
+    return render_template('index.html', title = title, posts = posts, quotes = quotes)
 
 
 @main.route('/about')
