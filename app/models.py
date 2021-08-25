@@ -6,18 +6,18 @@ from . import login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+   return User.query.get(int(user_id))
 
 class Blogpost(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50))
-    subtitle = db.Column(db.String(50))
-    author = db.Column(db.String(20))
+    title = db.Column(db.String(255))
+    subtitle = db.Column(db.String(255))
+    author = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime,default=datetime.utcnow)
     content = db.Column(db.Text)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    comments = db.relationship("Comment", backref='user', lazy='dynamic')
+    comments = db.relationship("Comment", backref='users', lazy='dynamic')
 
 
     def delete(self):
@@ -25,13 +25,14 @@ class Blogpost(db.Model):
         db.session.commit()
 
 class User(UserMixin,db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'users'    
     
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
+    pass_secure = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
-    # comments = db.relationship('Comment', backref='user',lazy="dynamic")
+    comments = db.relationship('Comment', backref='user',lazy="dynamic")
     posts = db.relationship('Blogpost',backref = 'user',lazy = "dynamic")
 
 
@@ -44,8 +45,8 @@ class User(UserMixin,db.Model):
         self.pass_secure = generate_password_hash(password)
 
 
-        def verify_password(self,password):
-            return check_password_hash(self.pass_secure,password)
+    def verify_password(self,password):
+        return check_password_hash(self.pass_secure,password)
     def __repr__(self):
         return f'User {self.username}'
 
@@ -56,9 +57,9 @@ class Comment(db.Model):
     comment = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     post_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
-    # user_id = db.Column(db.Integer,db.ForeignKey("users_id"))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-    def save(self):
+    def save_c(self):
         db.session.add(self)
         db.session.commit()
 

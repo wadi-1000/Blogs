@@ -51,11 +51,15 @@
    font-weight: bold;
 }
 #img1{
-   background: url(/app/static/undraw_Meditation_re_gll0.svg);
+   background-image:  url(../static/undraw_Meditation_re_gll0.svg);
 }
 #img2{
-   background: url(/app/static/undraw_programmer_imem.svg);
+   background: url(../static/undraw_programmer_imem.svg);
+
 }
 #img3{
-   background: url(/app/static/undraw_typewriter_i8xd.svg);
+   background: url(../static/undraw_typewriter_i8xd.svg);
+}
+#img4{
+   background: url(../static/undraw_Post_re_mtr4.svg);
 }

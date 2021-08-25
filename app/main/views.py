@@ -4,6 +4,7 @@ from ..models import Blogpost,db,User,Comment
 from datetime import datetime
 from flask_login import login_required,current_user
 from app.requests import get_quotes, repeat_get_quotes
+from .forms import CommentForm
 
 
 # Views
@@ -15,7 +16,7 @@ def index():
     title = 'Zuess'
     posts = Blogpost.query.order_by(Blogpost.date_posted.desc()).all()
     quote = get_quotes()
-    quotes = repeat_get_quotes(10, get_quotes)
+    quotes = repeat_get_quotes(1, get_quotes)
     return render_template('index.html', title = title, posts = posts, quotes = quotes)
 
 
@@ -59,24 +60,38 @@ def addpost():
     db.session.add(post)
     db.session.commit()
 
-
-
     return redirect(url_for('main.index'))
+
 @main.route('/post/<post_id>/delete', methods = ['POST'])
 @login_required
 def delete_post(post_id):
-    blog = Blog.query.get(post_id)
-    if blog.user != current_user:
+    post_id = Blogpost.query.get(post_id)
+    if post.user != current_user:
         abort(403)
-    blog.delete()
+    post.delete()
     flash("You have deleted your Blog succesfully!")
+    
     return redirect(url_for('main.index'))
 
-@main.route('/comment/<post_id>', methods = ['Post','GET'])
-@login_required
+@main.route('/comment/<int:post_id>', methods = ['POST','GET'])
 def comment(post_id):
+    form = CommentForm()
     blog = Blogpost.query.get(post_id)
-    comment =request.form.get('newcomment')
-    new_comment = Comment(comment = comment, user_id = current_user._get_current_object().id,id=post_id)
-    new_comment.save()
-    return redirect(url_for('main.index',id = post_id))
+    all_comments = Comment.query.filter_by(post_id = post_id).all()
+    if form.validate_on_submit():
+        comment = form.comment.data 
+        post_id = post_id
+        user_id = current_user._get_current_object().id
+        new_comment = Comment(comment = comment,post_id = post_id)
+        new_comment.save_c()
+        return redirect(url_for('.comment', post_id = post_id))
+    return render_template('comment.html', form =form,  all_comments=all_comments)
+
+
+
+# @main.route('/comments/<post_id>' , methods = ['Post','Get'])
+# @login_required
+# def comments(post_id):
+#     blog = Blog.query.filter_by(id = post_id).first()
+#     comment = Comment.query.filter_by(post_id = post.id).order_by(Comment.posted.desc())
+#     return render_template('comment.html', blog = blog, comments = comments)

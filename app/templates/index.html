@@ -41,10 +41,10 @@
           <a class="nav-link" href="{{ url_for('main.add') }}" id="ad">Add</a>
       </li>
       {% if current_user.is_authenticated %}
-      <li style="color:white;padding:15px;">{{current_user.username}}</li>
-      <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+      <li style="color:white;padding:15px;" id="ad">{{current_user.username}}</li>
+      <li><a href="{{url_for('auth.logout')}}" id="ad">Sign out</a></li>
       {% else %}
-      <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+      <li><a href="{{url_for('auth.login')}}" id="ad">Sign in</a></li>
       {%endif%}
       </ul>
     </div>
@@ -52,14 +52,14 @@
 </nav>
 </div>
 <!-- Page Header -->
-<header class="masthead" id="img1">
+<header class="masthead">
   <div class="container" style="margin: 70px;">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading" id="txt">
-          <h1>Healthy living for you</h1>
+      <div class="col-lg-8 col-md-10 mx-auto" id="img1">
+        
+          <h1 id="txt">Healthy living for you</h1>
        
-        </div>
+        
       </div>
     </div>
   </div>
@@ -85,6 +85,7 @@
       <hr>
     </div>
   </div>
+ 
 </div>
 
 <hr>
@@ -94,15 +95,14 @@
   <div class="col-md-4">
     <div class="container">
       {% for quote in quotes %}
-      {% if quote.quote == quotes[0].quote %}
-      {% else %}
+     
         <div class="card cardquote">
             <div class="card-title">
-                <h4>A quote by: <span style="color: rgb(3, 3, 3)">{{quote.author}}</span> </h4>
+                <h4 style="font-size: 22px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">A quote by: <span style="color: rgb(3, 3, 3)">{{quote.author}}</span> </h4>
             </div>
-            <p class="card-text">{{quote.quote}}</p>
+            <p class="card-text" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 20px;font-style: italic;">{{quote.quote}}</p>
         </div>
-      {% endif %}
+     
       {% endfor %}
       </div>
     

@@ -40,10 +40,10 @@
             <a class="nav-link" href="{{ url_for('main.add') }}" id="ad">Add</a>
         </li>
         {% if current_user.is_authenticated %}
-        <li style="color:white;padding:15px;">{{current_user.username}}</li>
-        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+        <li style="color:white;padding:15px;" id="ad">{{current_user.username}}</li>
+        <li><a href="{{url_for('auth.logout')}}" id="ad">Sign out</a></li>
         {% else %}
-        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+        <li><a href="{{url_for('auth.login')}}" id="ad">Sign in</a></li>
         {%endif%}
         
       </ul>
@@ -52,10 +52,10 @@
 </nav>
 </div>
 <!-- Page Header -->
-<header class="masthead" id="img2">
+<header class="masthead">
   <div class="container" style="margin: 70px;">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="col-lg-8 col-md-10 mx-auto" id="img2">
         <div class="site-heading" id="txt">
           <h1>About me</h1>
        
@@ -70,8 +70,9 @@
   <!-- Main Content -->
   <div class="container">
     <div class="row">
-        <h2>This is what I do.</h2>
+        
       <div class="col-lg-8 col-md-10 mx-auto">
+        <h4>This is what I do.</h4>
        <p>I am a programmer.</p>
        <p> Programmers write code for computer programs and mobile applications.</p> 
        <p>They also are involved in maintaining, debugging and troubleshooting systems and software to ensure that everything is running smoothly.</p>

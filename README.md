@@ -12,7 +12,7 @@ My project of a web application that allows one to view blogs.
 
 -  An about page about me.
 
--  An add page to add blogs.
+-  An add page to add blogs where when adding you have to put the content using HTML tags.
 
 - Quotes at the bottom of the page.
 
@@ -22,7 +22,7 @@ My project of a web application that allows one to view blogs.
 
 ### Known Bugs
 
--  No known bugs so far.
+-  Delete function is not working as expected.
 
 ### Behavoiur Driven Development
 
